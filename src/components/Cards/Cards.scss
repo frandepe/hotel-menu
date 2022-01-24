@@ -1,0 +1,27 @@
+.Cards {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-content: center;
+    align-items: center;
+  }
+  &__container-card {
+    padding: 5px;
+    img {
+      cursor: pointer;
+    }
+  }
+  &__card-body {
+    span {
+      font-weight: bold;
+      color: #5f5f57;
+    }
+    p {
+      margin: 0;
+      width: 500px;
+    }
+  }
+  &__input-container {
+    padding: 5%;
+  }
+}

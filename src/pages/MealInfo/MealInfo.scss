@@ -1,0 +1,12 @@
+.MealInfo {
+  &__container {
+    display: flex;
+    justify-content: center;
+    h2 {
+      font-family: var(--cursiva);
+      font-size: 3rem;
+      text-align: center;
+      padding: 3%;
+    }
+  }
+}
