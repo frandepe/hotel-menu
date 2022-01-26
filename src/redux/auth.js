@@ -13,8 +13,6 @@ const LOGOUT = "LOGOUT";
 const ERROR = "ERROR";
 
 // REDUCER
-// El reducer lo que hace es encontrar la accion que queremos realizar
-// Y al encontrarla le devuelve los valores al STORE, quien maneja los estados de redux
 export default function AuthReducer(state = defaultValue, { type, payload }) {
   switch (type) {
     case LOGIN:
@@ -43,16 +41,11 @@ export const loginAction =
       dispatch({
         type: LOGIN,
         payload: response.data.token,
+        token: localStorage.setItem("token", response.data.token),
       });
     } catch (error) {
       dispatch({
         type: ERROR,
       });
     }
-
-    // El dispatch llama al reducer
-
-    //dispatch de login si obtenemos el token
-
-    //dispatch un error
   };

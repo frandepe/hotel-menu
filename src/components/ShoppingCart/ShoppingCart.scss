@@ -50,3 +50,25 @@
 h2 {
   color: var(--primary);
 }
+
+@media (max-width: 600px) {
+  .Shop {
+    &__container {
+      grid-template-columns: repeat(1, 1fr);
+      justify-items: center;
+    }
+    &__card-body {
+      p {
+        margin: 0;
+        width: 150px;
+      }
+    }
+    &__container-card {
+      flex-direction: column;
+    }
+    &__delete {
+      right: 0;
+      padding: 10px;
+    }
+  }
+}

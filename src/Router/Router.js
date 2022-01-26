@@ -11,9 +11,9 @@ const Router = () => {
         <NavbarComp />
         <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/meal/:id" element={<MealInfo />} />
           <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Navigate to="/home" />} />
+          <Route path="/meal/:id" element={<MealInfo />} />
+          <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -2,8 +2,8 @@
   &__container {
     background: rgba(41, 22, 22, 0.25);
     box-shadow: 0 8px 32px 0 rgba(135, 31, 31, 0.37);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    // backdrop-filter: blur(4px);
+    // -webkit-backdrop-filter: blur(4px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     width: 80vw;
@@ -29,14 +29,38 @@
     justify-content: center;
     font-size: 1.5em;
     color: var(--secondary);
+    margin-bottom: 3%;
     i {
       padding: 5px;
+    }
+  }
+  &__row1 {
+    border-bottom: 1px solid black;
+    padding-bottom: 3%;
+  }
+  &__container-img-logotipo {
+    display: flex;
+    justify-content: center;
+    img {
+      cursor: pointer;
     }
   }
   &__row2 {
     margin-top: 3%;
     i {
       color: var(--secondary);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .MealId {
+    &__col2 {
+      display: flex;
+      justify-content: center;
+      img {
+        width: 250px;
+      }
     }
   }
 }

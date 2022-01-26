@@ -52,7 +52,7 @@ const Cards = ({ cart, setCart }) => {
       <div className="Cards__container">
         {meals
           .filter((food) => {
-            if (food.sourceName?.toLowerCase().includes(search.toLowerCase())) {
+            if (food.title?.toLowerCase().includes(search.toLowerCase())) {
               return food;
             }
           })
@@ -92,7 +92,7 @@ const Cards = ({ cart, setCart }) => {
                     }}
                     variant="primary"
                   >
-                    Add <i class="fas fa-plus"></i>
+                    Add <i className="fas fa-plus"></i>
                   </Button>
                 </Card.Body>
               </Card>

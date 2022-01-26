@@ -4,16 +4,24 @@ import { ErrorMessage, Formik } from "formik";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../redux/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token, error } = useSelector((store) => store.user);
 
-  // window.localStorage.setItem("token", JSON.stringify(token));
-  localStorage.setItem("token", token);
+  // esto antes andaba........
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     navigate(`/home`);
+  //   }
+  // }, [loginAction(token)]);
+
   useEffect(() => {
-    console.log(token);
-  }, [token]);
+    localStorage.getItem("token");
+  }, []);
 
   return (
     <div className="Login__container">
@@ -68,9 +76,9 @@ const Login = () => {
           onSubmit={({ email, password }, { resetForm }) => {
             resetForm();
             dispatch(loginAction({ email, password }));
-            // localStorage.setItem("token", token);
-            // console.log(localStorage.getItem("token"));
-            console.log("Form enviado");
+            if (loginAction({ email, password })) {
+              return navigate(`/home`);
+            }
           }}
         >
           {({ values, errors, handleSubmit, handleChange, handleBlur }) => (
@@ -110,13 +118,20 @@ const Login = () => {
                 />
               </Form.Floating>
 
-              <Button className="Login__btn" type="submit">
+              <Button
+                // onClick={() => {
+                //   if (localStorage.getItem("token")) {
+                //     navigate("/home");
+                //   }
+                // }}
+                className="Login__btn"
+                type="submit"
+              >
                 Login
               </Button>
             </Form>
           )}
         </Formik>
-        <h1>{token}</h1>
         {error && (
           <div className="Login__error-check">
             <b>Incorrect Email or Password</b>

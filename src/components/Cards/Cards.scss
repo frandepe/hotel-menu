@@ -7,6 +7,7 @@
   }
   &__container-card {
     padding: 5px;
+    background: var(--fourth);
     img {
       cursor: pointer;
     }
@@ -18,10 +19,23 @@
     }
     p {
       margin: 0;
-      width: 500px;
+      width: 200px;
     }
   }
   &__input-container {
-    padding: 5%;
+    padding: 3%;
+    background-color: var(--primary);
+    margin-bottom: 3%;
+    width: 100%;
+    border-radius: 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  .Cards {
+    &__container {
+      grid-template-columns: repeat(1, 1fr);
+      justify-items: center;
+    }
   }
 }

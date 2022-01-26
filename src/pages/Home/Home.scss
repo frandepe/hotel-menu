@@ -38,3 +38,12 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .Home {
+    &__container-intro-img {
+      grid-template-columns: repeat(1, 1fr);
+      justify-items: center;
+    }
+  }
+}

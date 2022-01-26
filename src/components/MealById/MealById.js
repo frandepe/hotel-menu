@@ -4,12 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getMealId } from "../../redux/api";
 import { Image, Row, Col, Container } from "react-bootstrap";
+import logo from "../Navbar/logoCooking.png";
 import "./MealById.scss";
+import { useNavigate } from "react-router-dom";
 
 const MealById = () => {
   const dispatch = useDispatch();
   const { mealById } = useSelector((state) => state.meals);
   const { id } = useParams();
+  const navigate = useNavigate();
+
+  const navigatetoHome = () => {
+    navigate("/home");
+  };
 
   useEffect(() => {
     dispatch(getMealId(id));
@@ -18,12 +25,22 @@ const MealById = () => {
   return (
     <div className="MealId__container">
       <Container>
-        <Row>
+        <Row className="MealId__row1">
           <Col>
             {" "}
             <h3>{mealById.title}</h3>
             <h5>{mealById.sourceName}</h5>
             <b style={{ color: "#ff5043" }}>Servings: {mealById.servings}</b>
+            <div className="MealId__container-img-logotipo">
+              <img
+                onClick={navigatetoHome}
+                src={logo}
+                width="200"
+                height="auto"
+                className="d-inline-block align-top MealId__img-logotipo"
+                alt={"logo"}
+              />
+            </div>
           </Col>
           <Col className="MealId__col2">
             <Image src={mealById.image} />
@@ -35,7 +52,7 @@ const MealById = () => {
               <li>
                 {mealById.vegan && (
                   <p>
-                    <i class="fas fa-check"></i> Vegan
+                    <i className="fas fa-check"></i> Vegan
                   </p>
                 )}
               </li>
@@ -43,7 +60,7 @@ const MealById = () => {
                 {mealById.veryHealthy && (
                   <p>
                     {" "}
-                    <i class="fas fa-check"></i> Very Healthy
+                    <i className="fas fa-check"></i> Very Healthy
                   </p>
                 )}
               </li>
@@ -51,7 +68,7 @@ const MealById = () => {
                 {mealById.dairyFree && (
                   <p>
                     {" "}
-                    <i class="fas fa-check"></i> Dairy Free
+                    <i className="fas fa-check"></i> Dairy Free
                   </p>
                 )}
               </li>
@@ -59,7 +76,7 @@ const MealById = () => {
                 {mealById.glutenFree && (
                   <p>
                     {" "}
-                    <i class="fas fa-check"></i> Gluten Free
+                    <i className="fas fa-check"></i> Gluten Free
                   </p>
                 )}
               </li>
