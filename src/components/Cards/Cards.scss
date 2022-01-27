@@ -22,6 +22,11 @@
       width: 200px;
     }
   }
+  &__card-title {
+    // color: var(--secondary);
+    text-shadow: 2px 2px 2px rgba(233, 248, 17, 0.6);
+    width: 200px;
+  }
   &__input-container {
     padding: 3%;
     background-color: var(--primary);

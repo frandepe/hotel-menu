@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getMealId } from "../../redux/api";
 import { Image, Row, Col, Container } from "react-bootstrap";
 import logo from "../Navbar/logoCooking.png";

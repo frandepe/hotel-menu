@@ -1,4 +1,4 @@
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import "./ShoppingCart.scss";
 
@@ -30,19 +30,6 @@ const ShoppingCart = ({ cart, setCart }) => {
     setCart([...cart]);
     //}
   };
-
-  // const index = cart.indexOf(id);
-  // if (index > 1) {
-  //   const delOne = cart.splice(index, 1);
-  //   setCart(delOne);
-  // }
-
-  // const delMeal = cart.filter((food) => food.id !== id);
-  // setCart(delMeal);
-
-  // if (cart.indexOf(meals)) {
-  //   setQuant(quant++);
-  // }
 
   useEffect(() => {
     const dataCart = JSON.parse(localStorage.getItem("cart"));
@@ -89,15 +76,6 @@ const ShoppingCart = ({ cart, setCart }) => {
                   ) : (
                     ""
                   )}
-
-                  {/* <Button
-                    onClick={() => {
-                      delFood(food.id);
-                    }}
-                    variant="primary"
-                  >
-                    tarro de basoura
-                  </Button> */}
 
                   <i
                     onClick={() => {

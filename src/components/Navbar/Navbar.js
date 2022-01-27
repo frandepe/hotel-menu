@@ -3,11 +3,9 @@ import logo from "./logoCooking.png";
 import AboutMe from "../AboutMe/AboutMe";
 import "./Navbar.scss";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 const NavbarComp = () => {
   const navigate = useNavigate();
-  const [log, setLog] = useState("Sing Out");
 
   const singOut = () => {
     localStorage.removeItem("token");

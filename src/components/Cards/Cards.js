@@ -12,11 +12,10 @@ const Cards = ({ cart, setCart }) => {
   const handleInput = (e) => {
     setSearch(e.target.value);
   };
+
+  // Agregar al card de productos dos comidas que sean veganas y dos que no (no se puede agregar mas de 4)
   // si mi array no incluye dos productos veganos y dos no veganos entonces food
   const addFood = (id) => {
-    // cart.includes(meals.vegan === false)
-    // const veg = meals.vegan === true;
-    // const noveg = meals.vegan === false;
     // const veg = cart.includes(meals.vegan).length < 2;
     if (cart.length < 4) {
       const food = meals.filter((food) => food.id === id);
@@ -68,7 +67,7 @@ const Cards = ({ cart, setCart }) => {
                   src={food.image}
                 />
                 <Card.Body className="Cards__card-body">
-                  <Card.Title className="Shop__card-title">
+                  <Card.Title className="Cards__card-title">
                     {food.title}
                   </Card.Title>
                   <p>

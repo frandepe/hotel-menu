@@ -7,7 +7,6 @@ const MealInfo = () => {
     <div className="MealInfo__container">
       <div>
         <h2>Learn more about this dish</h2>
-
         <MealById />
       </div>
     </div>
