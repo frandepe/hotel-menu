@@ -26,7 +26,7 @@ const Login = () => {
       <div className="Login__container-login">
         <div className="Login__container-signin">
           <h2>
-            Sign in <i className="fas fa-user"></i>{" "}
+            Login <i className="fas fa-user"></i>{" "}
           </h2>
         </div>
         <Formik
