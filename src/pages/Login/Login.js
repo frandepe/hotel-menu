@@ -11,17 +11,12 @@ const Login = () => {
   const dispatch = useDispatch();
   const { token, error } = useSelector((store) => store.user);
 
-  // esto antes andaba........
-
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     navigate(`/home`);
-  //   }
-  // }, [loginAction(token)]);
-
   useEffect(() => {
-    localStorage.getItem("token");
-  }, []);
+    // if (localStorage.getItem("token")) {
+    //   navigate(`/home`);
+    // }
+    window.localStorage.getItem("token") && navigate("/home");
+  }, [window.localStorage.getItem("token")]);
 
   return (
     <div className="Login__container">
@@ -76,9 +71,12 @@ const Login = () => {
           onSubmit={({ email, password }, { resetForm }) => {
             resetForm();
             dispatch(loginAction({ email, password }));
-            if (loginAction({ email, password })) {
-              return navigate(`/home`);
-            }
+            // {
+            //   dispatch(loginAction(token)) && navigate("/home");
+            // }
+            // if (loginAction(token)) {
+            //   return navigate(`/home`);
+            // }
           }}
         >
           {({ values, errors, handleSubmit, handleChange, handleBlur }) => (
@@ -120,9 +118,9 @@ const Login = () => {
 
               <Button
                 // onClick={() => {
-                //   if (localStorage.getItem("token")) {
-                //     navigate("/home");
-                //   }
+                //   return (
+                //     window.localStorage.getItem("token") && navigate("/home")
+                //   );
                 // }}
                 className="Login__btn"
                 type="submit"

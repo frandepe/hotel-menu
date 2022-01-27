@@ -12,27 +12,27 @@ const Cards = ({ cart, setCart }) => {
   const handleInput = (e) => {
     setSearch(e.target.value);
   };
-
+  // si mi array no incluye dos productos veganos y dos no veganos entonces food
   const addFood = (id) => {
-    // const long = meals.filter((x) => x.vegan === 2).length;
-
+    // cart.includes(meals.vegan === false)
+    // const veg = meals.vegan === true;
+    // const noveg = meals.vegan === false;
+    // const veg = cart.includes(meals.vegan).length < 2;
     if (cart.length < 4) {
       const food = meals.filter((food) => food.id === id);
-
+      // const res = food.includes(meals.vegan < 2).length;
       // const res = food.filter((x) => x.vegan === 2).length;
 
       setCart([...cart, ...food]);
       console.log("CART:", cart);
       console.log("FOOD:", food);
-    }
 
-    // const check = cart.every((food) => food.vegan === 2);
-    // if (check) {
-    //   const food = meals.filter((food) => food.id === id);
-    //   setCart([...cart, ...food]);
-    // } else {
-    //   alert("El producto se añadio");
-    // }
+      // const check = cart.every((food) => food.vegan === 2);
+      // if (check) {
+      //   const food = meals.filter((food) => food.id === id);
+      //   setCart([...cart, ...food]);
+      // }
+    }
   };
 
   return (
@@ -45,7 +45,6 @@ const Cards = ({ cart, setCart }) => {
           onChange={handleInput}
         />
       </div>
-      {/* <input type="text" placeholder="Search..." onChange={handleInput} /> */}
       <h4>
         If you are interested in knowing more about a dish, click on its image
       </h4>
