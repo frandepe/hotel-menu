@@ -1,4 +1,4 @@
-import { Card, Button, Form } from "react-bootstrap";
+import { Card, Button, Form, Badge } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./Cards.scss";
@@ -15,22 +15,39 @@ const Cards = ({ cart, setCart }) => {
 
   // Agregar al card de productos dos comidas que sean veganas y dos que no (no se puede agregar mas de 4)
   // si mi array no incluye dos productos veganos y dos no veganos entonces food
+  // PROBLEMA: si tengo dos productos en el cart con el mismo id se me borran los dos
+
+  // solucion mauro
+
+  //   Const cantidad = carrito.filter ( productoseleccionado.vegan)
+  // If (carrito.length == 4 || cantidad.length == 2){
+  //  Ya no se puede agregar
+  // }Else {
+  //  Agrégalo
+  // }
+
   const addFood = (id) => {
-    // const veg = cart.includes(meals.vegan).length < 2;
+    const food = meals.filter((food) => food.id === id);
+
+    const veganFood = cart.filter((food) => food.vegan === true);
+    const nonVeganFood = cart.filter((food) => food.vegan === false);
+
     if (cart.length < 4) {
-      const food = meals.filter((food) => food.id === id);
-      // const res = food.includes(meals.vegan < 2).length;
-      // const res = food.filter((x) => x.vegan === 2).length;
-
-      setCart([...cart, ...food]);
-      console.log("CART:", cart);
-      console.log("FOOD:", food);
-
-      // const check = cart.every((food) => food.vegan === 2);
-      // if (check) {
-      //   const food = meals.filter((food) => food.id === id);
-      //   setCart([...cart, ...food]);
-      // }
+      if (food[0].vegan) {
+        if (veganFood.length < 2) {
+          setCart([...cart, food[0]]);
+        } else {
+          alert("You can only add two vegan food");
+        }
+      } else {
+        if (nonVeganFood.length < 2) {
+          setCart([...cart, food[0]]);
+        } else {
+          alert("You can only add two non-vegan food");
+        }
+      }
+    } else {
+      alert("You can only add four food");
     }
   };
 
@@ -49,11 +66,9 @@ const Cards = ({ cart, setCart }) => {
       </h4>
       <div className="Cards__container">
         {meals
-          .filter((food) => {
-            if (food.title?.toLowerCase().includes(search.toLowerCase())) {
-              return food;
-            }
-          })
+          .filter((food) =>
+            food.title?.toLowerCase().includes(search.toLowerCase())
+          )
           .map((food) => {
             return (
               <Card
@@ -70,20 +85,21 @@ const Cards = ({ cart, setCart }) => {
                   <Card.Title className="Cards__card-title">
                     {food.title}
                   </Card.Title>
+
+                  {food.vegan && <Badge bg="light">Vegan</Badge>}
                   <p>
+                    <i className="fas fa-money-bill-wave"></i>{" "}
                     <span>Price:</span> ${food.pricePerServing}
                   </p>
                   <p>
-                    <span>Delay:</span> {food.readyInMinutes} minutes
+                    <i className="far fa-clock"></i> <span>Delay:</span>{" "}
+                    {food.readyInMinutes} minutes
                   </p>
                   <p>
-                    <span>Health score:</span> {food.healthScore}
+                    <i className="fas fa-heart"></i> <span>Health score:</span>{" "}
+                    {food.healthScore}
                   </p>
-                  {food.vegan ? (
-                    <p style={{ color: "#009714" }}>Vegan food</p>
-                  ) : (
-                    ""
-                  )}
+
                   <Button
                     onClick={() => {
                       addFood(food.id);

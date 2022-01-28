@@ -6,8 +6,9 @@
     align-items: center;
   }
   &__container-card {
-    padding: 5px;
-    background: var(--fourth);
+    border: 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
     img {
       cursor: pointer;
     }
@@ -21,11 +22,14 @@
       margin: 0;
       width: 200px;
     }
+    button {
+      margin: 3%;
+    }
   }
   &__card-title {
-    // color: var(--secondary);
-    text-shadow: 2px 2px 2px rgba(233, 248, 17, 0.6);
-    width: 200px;
+    color: var(--primary);
+    // text-shadow: 2px 2px 2px rgba(26, 5, 5, 0.6);
+    // width: 200px;
   }
   &__input-container {
     padding: 3%;

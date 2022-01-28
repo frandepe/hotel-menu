@@ -61,7 +61,7 @@ const Login = () => {
             if (!valores.password) {
               errors.password = (
                 <div className="Login__errorsEmail">
-                  <p>Please insert an Password</p>
+                  <p>Please insert a Password</p>
                 </div>
               );
             }

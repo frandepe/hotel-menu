@@ -16,8 +16,8 @@
 $theme-colors: (
   "primary": #db392e,
   "secondary": #fb6467ff,
-  "succes": #fafd7cff,
-  "light": #f7f7f7,
+  "success": rgb(241, 241, 241),
+  "light": rgb(147, 235, 96),
 );
 
 @import "~bootstrap/scss/bootstrap";

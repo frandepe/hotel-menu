@@ -39,7 +39,7 @@ const Home = () => {
             </Col>
           </Row>
           <Col>
-            <Cards key={meals.id} cart={cart} setCart={setCart} />;
+            <Cards key={meals.id} cart={cart} setCart={setCart} />
           </Col>
         </Row>
       </Container>

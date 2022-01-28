@@ -16,7 +16,12 @@ const NavbarComp = () => {
 
   return (
     <div>
-      <Navbar className="Navbar__container" bg="light" expand="lg" sticky="top">
+      <Navbar
+        className="Navbar__container"
+        bg="success"
+        expand="lg"
+        sticky="top"
+      >
         <Container>
           <div className="Navbar3__aboutme">
             <AboutMe />

@@ -1,9 +1,10 @@
 import { Card } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import "./ShoppingCart.scss";
+import { useSelector } from "react-redux";
 
 const ShoppingCart = ({ cart, setCart }) => {
-  // const { meals } = useSelector((state) => state.meals);
+  const { meals } = useSelector((state) => state.meals);
   const [total, setTotal] = useState(0);
   const [readyInMin, setReadyInMin] = useState(0);
   const [health, setHealth] = useState(0);
@@ -20,7 +21,6 @@ const ShoppingCart = ({ cart, setCart }) => {
   }, [cart]);
 
   const delFood = (id) => {
-    //if (window.confirm("¿Queres eliminarlo?")) {
     cart.forEach((item, index) => {
       if (item.id === id) {
         item.cantidad = 1;
@@ -28,7 +28,6 @@ const ShoppingCart = ({ cart, setCart }) => {
       }
     });
     setCart([...cart]);
-    //}
   };
 
   useEffect(() => {
@@ -71,11 +70,7 @@ const ShoppingCart = ({ cart, setCart }) => {
                   <p>
                     <span>Health score:</span> {food.healthScore}
                   </p>
-                  {food.vegan ? (
-                    <p style={{ color: "#009714" }}>Vegan food</p>
-                  ) : (
-                    ""
-                  )}
+                  {food.vegan && <p style={{ color: "#009714" }}>Vegan food</p>}
 
                   <i
                     onClick={() => {
@@ -91,7 +86,7 @@ const ShoppingCart = ({ cart, setCart }) => {
       </div>
 
       {/* <p>Cantidad de comidas: {cart.length} / 4</p> */}
-      {cart.length > 0 ? (
+      {cart.length > 0 && (
         <div className="Shop__total-result">
           <p>
             <span>Total purchase:</span> ${Math.round(total)}
@@ -103,8 +98,6 @@ const ShoppingCart = ({ cart, setCart }) => {
             <span>Health score:</span> {health}
           </p>
         </div>
-      ) : (
-        ""
       )}
     </div>
   );
