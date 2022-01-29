@@ -2,19 +2,13 @@ import axios from "axios";
 // const API_KEY = "ebdcfc960f7949c88be86f21379cf729";
 const API_KEY = "320fe5ea2e9e447b8141efb301201ef9";
 
-// initial state
-
 const defaultValue = {
   meals: [],
   mealById: [],
 };
 
-// Action types
-
 const GET_MEALS = "GET_MEALS";
 const GET_MEALID = "GET_MEALID";
-
-// Reducer
 
 export default function mealsReducer(state = defaultValue, { type, payload }) {
   switch (type) {
@@ -26,8 +20,6 @@ export default function mealsReducer(state = defaultValue, { type, payload }) {
       return defaultValue;
   }
 }
-
-// Actions
 
 export const getMeals = () => async (dispatch) => {
   try {

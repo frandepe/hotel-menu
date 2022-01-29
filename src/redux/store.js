@@ -8,7 +8,6 @@ const rootReducer = combineReducers({
   meals: mealsReducer,
   mealById: mealsReducer,
   user: AuthReducer,
-  //Aca hay que agregar los otros reducers que se requieran
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,18 +1,15 @@
 import axios from "axios";
 
-// DEFAULT VALUE
 const defaultValue = {
   userInfo: {},
   token: null,
   error: false,
 };
 
-// ACTION TYPES
 const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
 const ERROR = "ERROR";
 
-// REDUCER
 export default function AuthReducer(state = defaultValue, { type, payload }) {
   switch (type) {
     case LOGIN:
@@ -26,12 +23,9 @@ export default function AuthReducer(state = defaultValue, { type, payload }) {
   }
 }
 
-// ACTIONS
 export const loginAction =
   ({ email, password }) =>
   async (dispatch) => {
-    //llamada al back
-
     try {
       const response = await axios.post("http://challenge-react.alkemy.org", {
         email,

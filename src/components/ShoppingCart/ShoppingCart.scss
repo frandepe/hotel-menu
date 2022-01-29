@@ -19,17 +19,20 @@
       width: 500px;
     }
   }
+  &__price-span {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
   &__card-title {
-    // color: var(--secondary);
     text-shadow: 2px 2px 2px rgba(233, 248, 17, 0.6);
     width: 300px;
   }
+  &__result-span {
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: underline;
+  }
   &__total-result {
-    span {
-      font-weight: bold;
-      color: var(--primary);
-      text-decoration: underline;
-    }
     p {
       margin: 0;
     }

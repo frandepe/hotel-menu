@@ -1,10 +1,8 @@
-import { Card } from "react-bootstrap";
+import { Card, Badge } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import "./ShoppingCart.scss";
-import { useSelector } from "react-redux";
 
 const ShoppingCart = ({ cart, setCart }) => {
-  const { meals } = useSelector((state) => state.meals);
   const [total, setTotal] = useState(0);
   const [readyInMin, setReadyInMin] = useState(0);
   const [health, setHealth] = useState(0);
@@ -62,15 +60,27 @@ const ShoppingCart = ({ cart, setCart }) => {
                   </Card.Title>
 
                   <p>
-                    <span>Price:</span> ${food.pricePerServing}
+                    <i className="fas fa-money-bill-wave"></i>{" "}
+                    <span>Price:</span>{" "}
+                    <span
+                      className="Cards__price-span"
+                      style={{ color: "black" }}
+                    >
+                      ${food.pricePerServing}
+                    </span>
                   </p>
                   <p>
-                    <span>Delay:</span> {food.readyInMinutes}
+                    <i
+                      className="far fa-clock"
+                      style={{ marginRight: "5px" }}
+                    ></i>
+                    {food.readyInMinutes} minutes
                   </p>
                   <p>
-                    <span>Health score:</span> {food.healthScore}
+                    <i className="fas fa-heart"></i> <span>Health score:</span>{" "}
+                    {food.healthScore}
                   </p>
-                  {food.vegan && <p style={{ color: "#009714" }}>Vegan food</p>}
+                  {food.vegan && <Badge bg="light">Vegan</Badge>}
 
                   <i
                     onClick={() => {
@@ -89,13 +99,15 @@ const ShoppingCart = ({ cart, setCart }) => {
       {cart.length > 0 && (
         <div className="Shop__total-result">
           <p>
-            <span>Total purchase:</span> ${Math.round(total)}
+            <span className="Shop__result-span">Total purchase:</span>{" "}
+            <span className="Shop__price-span">${Math.round(total)}</span>
           </p>
           <p>
-            <span>Ready in:</span> {readyInMin} minutes
+            <span className="Shop__result-span">Ready in:</span> {readyInMin}{" "}
+            minutes
           </p>
           <p>
-            <span>Health score:</span> {health}
+            <span className="Shop__result-span">Health score:</span> {health}
           </p>
         </div>
       )}

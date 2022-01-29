@@ -13,6 +13,9 @@
       cursor: pointer;
     }
   }
+  &__price-span {
+    font-size: 1.5em;
+  }
   &__card-body {
     span {
       font-weight: bold;

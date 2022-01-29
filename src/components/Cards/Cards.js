@@ -13,19 +13,6 @@ const Cards = ({ cart, setCart }) => {
     setSearch(e.target.value);
   };
 
-  // Agregar al card de productos dos comidas que sean veganas y dos que no (no se puede agregar mas de 4)
-  // si mi array no incluye dos productos veganos y dos no veganos entonces food
-  // PROBLEMA: si tengo dos productos en el cart con el mismo id se me borran los dos
-
-  // solucion mauro
-
-  //   Const cantidad = carrito.filter ( productoseleccionado.vegan)
-  // If (carrito.length == 4 || cantidad.length == 2){
-  //  Ya no se puede agregar
-  // }Else {
-  //  Agrégalo
-  // }
-
   const addFood = (id) => {
     const food = meals.filter((food) => food.id === id);
 
@@ -89,10 +76,19 @@ const Cards = ({ cart, setCart }) => {
                   {food.vegan && <Badge bg="light">Vegan</Badge>}
                   <p>
                     <i className="fas fa-money-bill-wave"></i>{" "}
-                    <span>Price:</span> ${food.pricePerServing}
+                    <span>Price:</span>{" "}
+                    <span
+                      className="Cards__price-span"
+                      style={{ color: "black" }}
+                    >
+                      ${food.pricePerServing}
+                    </span>
                   </p>
                   <p>
-                    <i className="far fa-clock"></i> <span>Delay:</span>{" "}
+                    <i
+                      className="far fa-clock"
+                      style={{ marginRight: "5px" }}
+                    ></i>
                     {food.readyInMinutes} minutes
                   </p>
                   <p>

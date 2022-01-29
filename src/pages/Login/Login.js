@@ -12,9 +12,6 @@ const Login = () => {
   const { token, error } = useSelector((store) => store.user);
 
   useEffect(() => {
-    // if (localStorage.getItem("token")) {
-    //   navigate(`/home`);
-    // }
     window.localStorage.getItem("token") && navigate("/home");
   }, [window.localStorage.getItem("token")]);
 
@@ -71,17 +68,10 @@ const Login = () => {
           onSubmit={({ email, password }, { resetForm }) => {
             resetForm();
             dispatch(loginAction({ email, password }));
-            // {
-            //   dispatch(loginAction(token)) && navigate("/home");
-            // }
-            // if (loginAction(token)) {
-            //   return navigate(`/home`);
-            // }
           }}
         >
           {({ values, errors, handleSubmit, handleChange, handleBlur }) => (
             <Form onSubmit={handleSubmit}>
-              {console.log(errors)}
               <Form.Floating className="mb-3">
                 <Form.Control
                   name="email"
@@ -98,7 +88,6 @@ const Login = () => {
                   component={() => <p>{errors.email}</p>}
                 />
               </Form.Floating>
-              {/* {touched.email && errors.email && <p>{errors.email}</p>} */}
               <Form.Floating>
                 <Form.Control
                   name="password"
@@ -116,15 +105,7 @@ const Login = () => {
                 />
               </Form.Floating>
 
-              <Button
-                // onClick={() => {
-                //   return (
-                //     window.localStorage.getItem("token") && navigate("/home")
-                //   );
-                // }}
-                className="Login__btn"
-                type="submit"
-              >
+              <Button className="Login__btn" type="submit">
                 Login
               </Button>
             </Form>
