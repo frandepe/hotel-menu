@@ -21,8 +21,8 @@ const AboutMe = () => {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <p>
-            My name is Franco De Paulo and I am a frontend developer. I made
-            this project for the company Alkemy! Thanks for watching
+            My name is Franco De Paulo and I am a frontend developer. If you
+            want to contact me, below I leave my networks! Thanks for watching
           </p>
           <p>• https://frandepaulo.netlify.app/</p>
           <p>• https://www.linkedin.com/in/franco-de-paulo-13509b186/</p>

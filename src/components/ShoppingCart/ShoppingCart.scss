@@ -49,6 +49,10 @@
     color: var(--primary);
     transition: 0.3s;
   }
+  &__btn-finalizarCompra {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 h2 {

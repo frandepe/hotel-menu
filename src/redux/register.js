@@ -10,7 +10,10 @@ const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
 const ERROR = "ERROR";
 
-export default function AuthReducer(state = defaultValue, { type, payload }) {
+export default function RegisterReducer(
+  state = defaultValue,
+  { type, payload }
+) {
   switch (type) {
     case LOGIN:
       return { ...state, token: payload, error: false };
@@ -23,18 +26,20 @@ export default function AuthReducer(state = defaultValue, { type, payload }) {
   }
 }
 
-export const loginAction =
-  ({ email, password }) =>
+export const registerAction =
+  ({ email, password, name, lastName }) =>
   async (dispatch) => {
     try {
       const response = await axios.post(
-        "https://back-sandbox.herokuapp.com/api/auth/login",
+        "https://back-sandbox.herokuapp.com/api/auth/register",
         {
           email,
           password,
+          name,
+          lastName,
         }
       );
-
+      console.log(response);
       dispatch({
         type: LOGIN,
         payload: response.data.token,

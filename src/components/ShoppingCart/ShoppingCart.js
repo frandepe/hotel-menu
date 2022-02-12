@@ -1,4 +1,4 @@
-import { Card, Badge } from "react-bootstrap";
+import { Card, Badge, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import "./ShoppingCart.scss";
 
@@ -9,14 +9,9 @@ const ShoppingCart = ({ cart, setCart }) => {
 
   console.log("CART DEL SHOP:", cart);
 
-  useEffect(() => {
-    const res1 = cart.reduce((acc, item) => acc + item.pricePerServing, 0);
-    const res2 = cart.reduce((acc, item) => acc + item.readyInMinutes, 0);
-    const res3 = cart.reduce((acc, item) => acc + item.healthScore, 0);
-    setTotal(res1);
-    setReadyInMin(res2);
-    setHealth(res3);
-  }, [cart]);
+  const handleBtnBuy = () => {
+    alert("Thanks for buying");
+  };
 
   const delFood = (id) => {
     cart.forEach((item, index) => {
@@ -27,6 +22,15 @@ const ShoppingCart = ({ cart, setCart }) => {
     });
     setCart([...cart]);
   };
+
+  useEffect(() => {
+    const res1 = cart.reduce((acc, item) => acc + item.pricePerServing, 0);
+    const res2 = cart.reduce((acc, item) => acc + item.readyInMinutes, 0);
+    const res3 = cart.reduce((acc, item) => acc + item.healthScore, 0);
+    setTotal(res1);
+    setReadyInMin(res2);
+    setHealth(res3);
+  }, [cart]);
 
   useEffect(() => {
     const dataCart = JSON.parse(localStorage.getItem("cart"));
@@ -109,6 +113,11 @@ const ShoppingCart = ({ cart, setCart }) => {
           <p>
             <span className="Shop__result-span">Health score:</span> {health}
           </p>
+          <div className="Shop__btn-finalizarCompra">
+            <Button onClick={handleBtnBuy} variant="primary">
+              Finalizar compra
+            </Button>
+          </div>
         </div>
       )}
     </div>
