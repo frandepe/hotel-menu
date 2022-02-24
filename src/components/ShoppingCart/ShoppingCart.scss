@@ -1,8 +1,8 @@
 .Shop {
-  &__container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
+  // &__container {
+  //   display: grid;
+  //   grid-template-columns: repeat(2, 1fr);
+  // }
   &__container-card {
     display: flex;
     flex-direction: row;
@@ -52,6 +52,21 @@
   &__btn-finalizarCompra {
     display: flex;
     justify-content: flex-end;
+    margin-right: 10px;
+  }
+  &__iconCart {
+    display: flex;
+  }
+  &__iconCart i {
+    font-size: 1.5em;
+  }
+  &__quantity {
+    background-color: var(--primary);
+    border-radius: 50%;
+    width: 25px;
+    height: auto;
+    text-align: center;
+    margin-left: -5px;
   }
 }
 

@@ -1,4 +1,11 @@
-import { Card, Button, Form, Badge } from "react-bootstrap";
+import {
+  Card,
+  Button,
+  Form,
+  Badge,
+  ToastContainer,
+  Toast,
+} from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./Cards.scss";
@@ -6,6 +13,9 @@ import { useState } from "react";
 
 const Cards = ({ cart, setCart }) => {
   const [search, setSearch] = useState("");
+  const [thanks, setThanks] = useState(false);
+  const [showB, setShowB] = useState(true);
+  const toggleShowB = () => setShowB(!showB);
   const { meals } = useSelector((state) => state.meals);
   const navigate = useNavigate();
 
@@ -16,26 +26,28 @@ const Cards = ({ cart, setCart }) => {
   const addFood = (id) => {
     const food = meals.filter((food) => food.id === id);
 
-    const veganFood = cart.filter((food) => food.vegan === true);
-    const nonVeganFood = cart.filter((food) => food.vegan === false);
+    // const veganFood = cart.filter((food) => food.vegan === true);
+    // const nonVeganFood = cart.filter((food) => food.vegan === false);
 
-    if (cart.length < 4) {
-      if (food[0].vegan) {
-        if (veganFood.length < 2) {
-          setCart([...cart, food[0]]);
-        } else {
-          alert("You can only add two vegan food");
-        }
-      } else {
-        if (nonVeganFood.length < 2) {
-          setCart([...cart, food[0]]);
-        } else {
-          alert("You can only add two non-vegan food");
-        }
-      }
-    } else {
-      alert("You can only add four food");
-    }
+    setCart([...cart, food[0]]);
+    setThanks(!thanks);
+    // if (cart.length < 4) {
+    //   if (food[0].vegan) {
+    //     if (veganFood.length < 2) {
+    //       setCart([...cart, food[0]]);
+    //     } else {
+    //       alert("You can only add two vegan food");
+    //     }
+    //   } else {
+    //     if (nonVeganFood.length < 2) {
+    //       setCart([...cart, food[0]]);
+    //     } else {
+    //       alert("You can only add two non-vegan food");
+    //     }
+    //   }
+    // } else {
+    //   alert("You can only add four food");
+    // }
   };
 
   return (
@@ -108,6 +120,24 @@ const Cards = ({ cart, setCart }) => {
               </Card>
             );
           })}
+
+        {thanks && (
+          <ToastContainer className="Cards__thanks">
+            <Toast onClose={toggleShowB} show={showB} animation={false}>
+              <Toast.Header>
+                <img
+                  src="holder.js/20x20?text=%20"
+                  className="rounded me-2"
+                  alt=""
+                />
+                <strong className="me-auto">Bon Apetit!</strong>
+              </Toast.Header>
+              <Toast.Body>
+                The purchase has been added to your shopping cart.
+              </Toast.Body>
+            </Toast>
+          </ToastContainer>
+        )}
       </div>
     </div>
   );
