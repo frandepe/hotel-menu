@@ -171,7 +171,7 @@ const Login = () => {
               >
                 {isRegistrando
                   ? "Do you have an account yet? Login"
-                  : "Do not have an account yet? Sign Up"}
+                  : "Do not have an account yet? Sign Up!"}
               </p>
               <Button className="Login__btn" type="submit">
                 {isRegistrando ? "Sign Up" : "Login"}
