@@ -14,9 +14,9 @@ const Login = () => {
   const [isRegistrando, setIsRegistrando] = useState(false);
   const { token, error } = useSelector((store) => store.user);
 
-  useEffect(() => {
+  /*useEffect(() => {
     window.localStorage.getItem("token") && navigate("/home");
-  }, [window.localStorage.getItem("token")]);
+  }, [window.localStorage.getItem("token")]); */
 
   return (
     <div className="Login__container">
