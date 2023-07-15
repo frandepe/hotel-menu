@@ -8,10 +8,11 @@ const NavbarComp = () => {
   const navigate = useNavigate();
 
   const singOut = () => {
-    localStorage.removeItem("token");
+   /* localStorage.removeItem("token");
     if (!localStorage.getItem("token")) {
       navigate("/login");
-    }
+    }*/
+    navigate("/login");
   };
 
   return (
